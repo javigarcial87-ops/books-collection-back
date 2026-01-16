@@ -13,18 +13,50 @@ const urlBooks ='https://api-books-ac3j.onrender.com/books'
 
 
 app.get("/books", async (req, res)=>{
+    console.log("peticion recibida en libros")
     try {
         const response = await axios.get(urlBooks)
-        res.json(response.data.results)
+
+        const books = response.data.map(book =>({
+
+            titulo: book.titulo,
+            imagen: book.imagen,
+            autor: book.autor,
+            publicacion: book.fechaPublicacion
+        }))
+
+        res.json(books)
 
     } catch(error) {
+        console.log("Error al pedir libros")
         res.status(500).json({
             error:"error al obtener libros"
         })
     }
 })
 
+const urlUsers = 'https://api-books-ac3j.onrender.com/users'
 
+app.get("/users", async (req, res)=>{
+    console.log("peticion recibida en users")
+    try {
+        const response = await axios.get(urlUsers)
+
+        const users = response.data.map(user=>({
+            
+
+
+        }))
+
+        res.json(response.data)
+
+    } catch(error) {
+        console.log("Error al pedir users")
+        res.status(500).json({
+            error:"error al obtener users"
+        })
+    }
+})
 
 
 app.listen (3000, ()=>{
