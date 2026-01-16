@@ -22,7 +22,7 @@ app.get("/books", async (req, res)=>{
             titulo: book.titulo,
             imagen: book.imagen,
             autor: book.autor,
-            fechaPublicacion: book.published
+            fechaPublicacion: book.fechaPublicacion
         }))
 
         res.json(books)
@@ -63,6 +63,6 @@ app.get("/users", async (req, res)=>{
 })
 
 
-app.listen (3002, ()=>{
-    console.log('express esta funcionando en el puerto http://localhost:3002')
+app.listen (4000, ()=>{
+    console.log('express esta funcionando en el puerto http://localhost:4000')
 })
